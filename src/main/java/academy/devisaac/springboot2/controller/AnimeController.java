@@ -31,8 +31,15 @@ public class AnimeController {
     }
 
     @GetMapping(path = "/{id}")
+    @ResponseStatus(HttpStatus.FOUND)
     public Anime findById(@PathVariable long id){
         return animeService.findById(id);
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+        public Anime save(@RequestBody Anime anime){
+       return animeService.save(anime);
     }
 
     //end point
