@@ -42,6 +42,13 @@ public class AnimeController {
        return animeService.save(anime);
     }
 
+    @DeleteMapping(path = "/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable long id){
+        animeService.delete(id);
+    }
+
+
     //end point
 
 }
