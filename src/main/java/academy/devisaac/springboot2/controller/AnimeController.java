@@ -3,6 +3,7 @@ package academy.devisaac.springboot2.controller;
 
 
 import academy.devisaac.springboot2.domain.Anime;
+import academy.devisaac.springboot2.service.AnimeService;
 import academy.devisaac.springboot2.util.DateUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -17,18 +18,20 @@ import java.util.List;
 
 
 @RestController
-@RequiredArgsConstructor
+@RequestMapping("animes")
 @Log4j2
-@RequestMapping("anime")
+@RequiredArgsConstructor
 public class AnimeController {
     private final DateUtil dateutil; //(Melhor para fazer testes unitarios do que o autowierd)
+    private final  AnimeService animeService;
 
-    @GetMapping(path = "list")
+    @GetMapping
     @ResponseStatus(HttpStatus.OK)
+
     public List<Anime> list(){
         log.info(dateutil.formatLocalDateTimeToDatabaseStyle(LocalDateTime.now()));
-        return List.of(new Anime("Boku no hero"), new Anime("Naruto"));
+    return animeService.listAll();
     };
-
+    //end point
 
 }
