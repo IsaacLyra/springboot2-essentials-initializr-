@@ -48,6 +48,13 @@ public class AnimeController {
         animeService.delete(id);
     }
 
+    @PutMapping
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void replace(@RequestBody Anime anime){ // Update
+        animeService.replace(anime);
+    }
+
+
 
     //end point
 
