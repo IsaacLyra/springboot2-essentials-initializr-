@@ -3,6 +3,8 @@ package academy.devisaac.springboot2.controller;
 
 
 import academy.devisaac.springboot2.domain.Anime;
+import academy.devisaac.springboot2.rquests.AnimePostRequestBody;
+import academy.devisaac.springboot2.rquests.AnimePutRequestBody;
 import academy.devisaac.springboot2.service.AnimeService;
 import academy.devisaac.springboot2.util.DateUtil;
 import lombok.RequiredArgsConstructor;
@@ -33,13 +35,13 @@ public class AnimeController {
     @GetMapping(path = "/{id}")
     @ResponseStatus(HttpStatus.FOUND)
     public Anime findById(@PathVariable long id){
-        return animeService.findById(id);
+        return animeService.findByIdOrThrowBadRequestException(id);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-        public Anime save(@RequestBody Anime anime){
-       return animeService.save(anime);
+        public Anime save(@RequestBody AnimePostRequestBody animePostRequestBody){
+       return animeService.save(animePostRequestBody);
     }
 
     @DeleteMapping(path = "/{id}")
@@ -50,8 +52,8 @@ public class AnimeController {
 
     @PutMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void replace(@RequestBody Anime anime){ // Update
-        animeService.replace(anime);
+    public void replace(@RequestBody AnimePutRequestBody animePutRequestBody){ // Update
+        animeService.replace(animePutRequestBody);
     }
 
 
