@@ -7,6 +7,7 @@ import academy.devisaac.springboot2.rquests.AnimePostRequestBody;
 import academy.devisaac.springboot2.rquests.AnimePutRequestBody;
 import academy.devisaac.springboot2.service.AnimeService;
 import academy.devisaac.springboot2.util.DateUtil;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
@@ -48,7 +49,7 @@ public class AnimeController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-        public Anime save(@RequestBody AnimePostRequestBody animePostRequestBody){
+        public Anime save(@RequestBody @Valid AnimePostRequestBody animePostRequestBody){
        return animeService.save(animePostRequestBody);
     }
 
