@@ -37,6 +37,15 @@ public class AnimeController {
         return animeService.findByIdOrThrowBadRequestException(id);
     }
 
+
+
+    @GetMapping(path = "/find/{name}")
+    @ResponseStatus(HttpStatus.FOUND)
+    public List<Anime> findByName(@PathVariable String name){
+        return animeService.findByName(name);
+    }
+
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
         public Anime save(@RequestBody AnimePostRequestBody animePostRequestBody){
