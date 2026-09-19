@@ -1,6 +1,7 @@
 package academy.devisaac.springboot2.service;
 
 import academy.devisaac.springboot2.domain.Anime;
+import academy.devisaac.springboot2.exception.BadRequestException;
 import academy.devisaac.springboot2.mapper.AnimeMapper;
 import academy.devisaac.springboot2.repository.AnimeRepository;
 import academy.devisaac.springboot2.rquests.AnimePostRequestBody;
@@ -25,7 +26,7 @@ public class AnimeService {
 
     public Anime findByIdOrThrowBadRequestException(long id) {
         return animeRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Anime not found"));
+                .orElseThrow(() -> new BadRequestException("Anime not found"));
 
     }
 
