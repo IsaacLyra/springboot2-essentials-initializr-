@@ -61,7 +61,7 @@ public class AnimeController {
 
     @PutMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void replace(@RequestBody AnimePutRequestBody animePutRequestBody){ // Update
+    public void replace(@RequestBody @Valid AnimePutRequestBody animePutRequestBody){ // Update
         animeService.replace(animePutRequestBody);
     }
 

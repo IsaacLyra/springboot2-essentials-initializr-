@@ -1,21 +1,12 @@
 package academy.devisaac.springboot2.exception;
 
-import lombok.Builder;
-import lombok.Data;
-
-import java.time.LocalDateTime;
-
-@Data
-@Builder
-public class BadRequestExceptionDetails {
-
-    private String title;
-    private int status;
-    private String details;
-    private String developerMessage;
-    private LocalDateTime timestamp;
+import lombok.Getter;
+import lombok.experimental.SuperBuilder;
 
 
+@Getter
+@SuperBuilder
+public class BadRequestExceptionDetails extends ExceptionDetails{
 
 
 }
