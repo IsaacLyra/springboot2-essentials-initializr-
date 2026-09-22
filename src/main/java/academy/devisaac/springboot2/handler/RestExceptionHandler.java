@@ -92,7 +92,5 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         return createResponseEntity(exceptionDetails, headers, statusCode, request);
     }
 
-
-
 }
 

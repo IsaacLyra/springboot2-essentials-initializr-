@@ -7,11 +7,10 @@ import academy.devisaac.springboot2.repository.AnimeRepository;
 import academy.devisaac.springboot2.rquests.AnimePostRequestBody;
 import academy.devisaac.springboot2.rquests.AnimePutRequestBody;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.server.ResponseStatusException;
-
 
 import java.util.List;
 
@@ -21,8 +20,8 @@ public class AnimeService {
 
     private final AnimeRepository animeRepository;
     private final AnimeMapper animeMapper;
-    public List<Anime> listAll() {
-        return animeRepository.findAll();
+    public Page<Anime> listAll(Pageable pageable) {
+        return animeRepository.findAll(pageable);
     }
 
     public Anime findByIdOrThrowBadRequestException(long id) {

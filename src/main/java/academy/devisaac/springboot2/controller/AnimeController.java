@@ -10,6 +10,8 @@ import academy.devisaac.springboot2.util.DateUtil;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,9 +29,9 @@ public class AnimeController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<Anime> list(){
+    public Page<Anime> list(Pageable pageable){
         log.info(dateutil.formatLocalDateTimeToDatabaseStyle(LocalDateTime.now()));
-    return animeService.listAll();
+    return animeService.listAll(pageable);
     }
 
     @GetMapping(path = "/{id}")
