@@ -14,7 +14,7 @@ public class devIsaacWebMvcConfigurer implements WebMvcConfigurer {
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
         PageableHandlerMethodArgumentResolver pageHandler = new PageableHandlerMethodArgumentResolver();
-        pageHandler.setFallbackPageable(PageRequest.of(0, 5));
-        resolvers.add(pageHandler);
+        pageHandler.setFallbackPageable(PageRequest.of(0, 5)); // O spring assume essa paginação caso alguém não utilize os parâmetros
+        resolvers.add(pageHandler);     // Facilitar para quem for consumir a api
     }
 }
