@@ -74,8 +74,6 @@ public class AnimeController {
         return ResponseEntity.noContent().build();
     }
 
-
-
     //end point
 
 }

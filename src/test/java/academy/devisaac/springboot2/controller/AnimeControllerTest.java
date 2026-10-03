@@ -65,11 +65,6 @@ public class AnimeControllerTest {
 
     }
 
-
-
-
-
-
     @Test
     @DisplayName("list returns of anime inside page object when successful")
     void list_returnsListOfAnimesInsidePageObject_WhenSuccessful(){
